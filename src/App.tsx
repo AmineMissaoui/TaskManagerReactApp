@@ -13,13 +13,17 @@ const App = () => {
   const handleAddTask = (task: string) => {
     setTasks([...tasks, task]);
   };
+
+  const handleDeleteTask = (taskToDelete : string) => {
+    setTasks(tasks.filter(task => task !== taskToDelete))
+  }
   return (
     <div>
       <Greeting name={'amine'} />
       <TaskInput onAdd={handleAddTask} />
       <ul>
         {tasks.map((task, i) => (
-          <li key={i}>{task}</li>
+          <li key={i}>{task} <button onClick={()=>{handleDeleteTask(task)}}>x</button></li>
         ))}
       </ul>
     </div>
